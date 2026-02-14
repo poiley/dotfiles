@@ -1,0 +1,8 @@
+# Antidote plugins file
+# Format: author/repo or author/repo path:subpath
+
+# Powerlevel10k theme
+romkatv/powerlevel10k
+
+# Git plugin from Oh My Zsh
+ohmyzsh/ohmyzsh path:plugins/git

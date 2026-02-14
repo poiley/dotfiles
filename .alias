@@ -1,0 +1,6 @@
+alias yt-mp3='yt-dlp -f bestaudio --extract-audio --audio-format mp3'
+alias ll='lla -lah'
+alias ls='lla'
+alias oc='opencode'
+alias c='claude'
+alias oce='opencode run '

@@ -1,0 +1,19 @@
+# Secrets and sensitive data
+.env
+.env.local
+*.pem
+*.key
+
+# Shell history and cache
+.zsh_history
+.zcompdump*
+.zsh_sessions/
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Generated files
+*.zwc
+*.zwc.old
