@@ -26,34 +26,54 @@ My optimized shell configuration focused on blazing-fast startup times and clean
 
 ## Installation
 
-### Prerequisites
-```bash
-# Install dependencies
-brew install antidote neofetch
-
-# Optional: install tools for lazy loading
-brew install mise pyenv bun
-```
-
-### Quick Setup
+### Automated Setup (Recommended)
 ```bash
 # Clone this repo
 git clone https://github.com/poiley/dotfiles.git ~/repos/dotfiles
 
-# Backup existing configs
-mv ~/.zshrc ~/.zshrc.backup 2>/dev/null || true
-mv ~/.p10k.zsh ~/.p10k.zsh.backup 2>/dev/null || true
+# Run setup script
+cd ~/repos/dotfiles
+./setup.sh
 
-# Symlink configs
+# Add your API keys to ~/.env (optional)
+# Edit ~/.env with your sensitive environment variables
+
+# Restart your shell
+exec zsh
+```
+
+The `setup.sh` script will:
+- ✅ Install Homebrew (if not present)
+- ✅ Install all required packages (antidote, neofetch, gh)
+- ✅ Install optional tools (mise, pyenv, bun, trufflehog, pre-commit)
+- ✅ Backup existing configs
+- ✅ Create symlinks to dotfiles
+- ✅ Initialize antidote plugins
+- ✅ Set up pre-commit hooks
+
+### Manual Setup
+If you prefer manual installation:
+
+```bash
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install dependencies
+brew install antidote neofetch gh
+
+# Optional: install tools for lazy loading
+brew install mise pyenv bun
+
+# Clone and symlink
+git clone https://github.com/poiley/dotfiles.git ~/repos/dotfiles
 ln -s ~/repos/dotfiles/.zshrc ~/.zshrc
 ln -s ~/repos/dotfiles/.zsh_plugins.txt ~/.zsh_plugins.txt
 ln -s ~/repos/dotfiles/.p10k.zsh ~/.p10k.zsh
 
-# Set up environment variables (if needed)
-# Create ~/.env with any required API keys and tokens
-# The .zshrc will source ~/.env automatically
+# Generate static plugin file
+antidote bundle <~/.zsh_plugins.txt >| ~/.zsh_plugins.zsh
 
-# Restart your shell
+# Restart shell
 exec zsh
 ```
 
